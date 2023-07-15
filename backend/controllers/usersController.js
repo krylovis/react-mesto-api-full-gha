@@ -80,9 +80,9 @@ module.exports.login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = generateToken(user.id);
-      res.cookie('jwt', token, {
-        httpOnly: true, sameSite: true,
-      });
+      // res.cookie('jwt', token, {
+      //   httpOnly: true, sameSite: true,
+      // });
       return res.status(HTTP_STATUS_OK).send({ token });
       // return res.status(HTTP_STATUS_OK).send(getUserData(user));
     })
