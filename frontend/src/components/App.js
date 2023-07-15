@@ -72,6 +72,7 @@ export default function App() {
 
   React.useEffect(() => {
     handleTokenCheck();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedIn]);
 
   function handleTokenCheck() {
