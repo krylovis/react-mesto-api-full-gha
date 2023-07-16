@@ -7,7 +7,6 @@ const {
 } = require('../controllers/usersController');
 
 router.get('/', auth, getUsers);
-// router.get('/me', auth, getUser);
 router.get('/me', auth, getUser);
 router.get('/:id', auth, getUserSchema, getUserById);
 
