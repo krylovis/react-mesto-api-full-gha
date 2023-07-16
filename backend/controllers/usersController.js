@@ -81,7 +81,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       const token = generateToken(user._id);
       res.cookie('jwt', token, {
-        httpOnly: true, sameSite: 'lax',
+        httpOnly: true,
       });
       return res.status(HTTP_STATUS_OK).send(getUserData(user));
     })
