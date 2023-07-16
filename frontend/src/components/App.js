@@ -79,7 +79,9 @@ export default function App() {
     // const token = localStorage.getItem('mesto-react-token');
     // if (token) {
     tokenVerification()
-      .then(({ data }) => {
+      // .then(({ data }) => {
+      .then((data) => {
+        console.log('data', data);
         if (data) {
           setUserEmail(data.email);
           setLoggedIn(true);
