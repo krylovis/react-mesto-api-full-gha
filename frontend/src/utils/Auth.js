@@ -26,7 +26,12 @@ export const register = ({ password, email }) => {
 };
 
 export const authorize = ({ password, email }) => {
-  return request('signin', defaultOptions(password, email))
+  return request('signin', {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify({ password, email }),
+    credentials: 'include',
+  })
 };
 
 export const tokenVerification = () => {
@@ -35,5 +40,6 @@ export const tokenVerification = () => {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
   })
 };
