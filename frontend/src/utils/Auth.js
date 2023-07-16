@@ -35,6 +35,7 @@ export const tokenVerification = (token) => {
     headers: {
       'Content-Type': 'application/json',
       // 'Authorization': token,
-    }
+    },
+    credentials: 'include',
   })
 };

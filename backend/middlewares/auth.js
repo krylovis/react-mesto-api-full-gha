@@ -6,15 +6,12 @@ const { NEEDED_AUTHORIZATION } = require('../utils/constants');
 
 module.exports = (req, res, next) => {
   const token = req.cookies.jwt;
-  console.log('req', req);
   if (!token) return next(new UnauthorizedError(NEEDED_AUTHORIZATION));
 
   let payload;
   try {
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret');
-    console.log('payload', payload);
   } catch (err) {
-    console.log('pcatch: ayload', payload);
     return next(new UnauthorizedError(NEEDED_AUTHORIZATION));
   }
 
