@@ -36,6 +36,5 @@ export const tokenVerification = (token) => {
       'Content-Type': 'application/json',
       // 'Authorization': token,
     },
-    credentials: 'include',
   })
 };
