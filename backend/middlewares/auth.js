@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../custom-errors/UnauthorizedError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
 const { NEEDED_AUTHORIZATION } = require('../utils/constants');
 
 module.exports = (req, res, next) => {
@@ -9,7 +10,7 @@ module.exports = (req, res, next) => {
 
   let payload;
   try {
-    payload = jwt.verify(token, 'super-strong-secret');
+    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret');
   } catch (err) {
     return next(new UnauthorizedError(NEEDED_AUTHORIZATION));
   }
