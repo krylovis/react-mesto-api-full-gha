@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const auth = require('../middlewares/auth');
+const { auth } = require('../middlewares/auth');
 const { getUserSchema, updateUserSchema, updateAvatarSchema } = require('../middlewares/joiSchemas');
 
 const {

@@ -4,7 +4,7 @@ const UnauthorizedError = require('../custom-errors/UnauthorizedError');
 const { NODE_ENV, JWT_SECRET } = process.env;
 const { NEEDED_AUTHORIZATION } = require('../utils/constants');
 
-module.exports = (req, res, next) => {
+module.exports.auth = (req, res, next) => {
   const token = req.cookies.jwt;
   if (!token) return next(new UnauthorizedError(NEEDED_AUTHORIZATION));
 
