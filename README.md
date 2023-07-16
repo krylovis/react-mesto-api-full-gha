@@ -5,6 +5,7 @@
 
 ## Ссылки на проект
 
+IP-адрес http://158.160.63.128
 IP-адрес 158.160.63.128
 
 Frontend https://mesto.krylovis.students.nomoredomains.xyz
