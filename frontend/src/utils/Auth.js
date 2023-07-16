@@ -30,11 +30,13 @@ export const authorize = ({ password, email }) => {
 };
 
 export const tokenVerification = (token) => {
-  return request('users/me', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      // 'Authorization': token,
-    },
-  })
+  return fetch(`${BASE_URL}/users/me`).then(getResponse)
+
+  // return request('users/me', {
+  //   method: 'GET',
+  //   // headers: {
+  //   //   'Content-Type': 'application/json',
+  //   //   'Authorization': token,
+  //   // },
+  // })
 };
