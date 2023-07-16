@@ -54,7 +54,7 @@ module.exports.getUsers = (req, res, next) => {
 };
 
 module.exports.getUser = (req, res, next) => {
-  User.findById(req.user.id)
+  User.findById(req.user._id)
     .then((user) => res.status(HTTP_STATUS_OK).send(user))
     .catch(next);
 };
@@ -83,7 +83,6 @@ module.exports.login = (req, res, next) => {
       res.cookie('jwt', token, {
         httpOnly: true, sameSite: true,
       });
-      // return res.status(HTTP_STATUS_OK).send({ token });
       return res.status(HTTP_STATUS_OK).send(getUserData(user));
     })
     .catch(next);
