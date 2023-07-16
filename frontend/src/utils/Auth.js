@@ -29,20 +29,12 @@ export const authorize = ({ password, email }) => {
   return request('signin', defaultOptions(password, email))
 };
 
-export const tokenVerification = () => {
+export const tokenVerification = (token) => {
   return request('users/me', {
     method: 'GET',
-    // headers: {
-    //   'Content-Type': 'application/json',
-    // }
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Authorization': token,
+    }
   })
 };
-// export const tokenVerification = (token) => {
-//   return request('users/me', {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': token,
-//     }
-//   })
-// };
