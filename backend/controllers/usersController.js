@@ -79,7 +79,7 @@ module.exports.login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = generateToken(user.id);
+      const token = generateToken(user._id);
       res.cookie('jwt', token, {
         httpOnly: true, sameSite: true,
       });
