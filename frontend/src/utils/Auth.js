@@ -30,8 +30,6 @@ export const authorize = ({ password, email }) => {
 };
 
 export const tokenVerification = () => {
-  console.log('tokenVerification');
-
   return request('users/me', {
     method: 'GET',
     headers: {
