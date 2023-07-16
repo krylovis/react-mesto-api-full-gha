@@ -4,10 +4,7 @@ const mongoose = require('mongoose');
 const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
-const {
-  PORT = 3000,
-  MONGO_URL = 'mongodb://localhost:27017',
-} = process.env;
+const { PORT, MONGO_URL } = process.env;
 const routes = require('./routes');
 
 mongoose.connect(`${MONGO_URL}/mestodb`);
