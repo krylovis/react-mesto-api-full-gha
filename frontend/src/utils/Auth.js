@@ -26,12 +26,7 @@ export const register = ({ password, email }) => {
 };
 
 export const authorize = ({ password, email }) => {
-  return request('signin', {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify({ password, email }),
-    credentials: 'include',
-  })
+  return request('signin', defaultOptions(password, email))
 };
 
 export const tokenVerification = () => {
