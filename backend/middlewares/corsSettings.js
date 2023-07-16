@@ -1,6 +1,8 @@
 const allowedCors = [
   'http://mesto.krylovis.students.nomoredomains.xyz',
   'https://mesto.krylovis.students.nomoredomains.xyz',
+  'http://api.krylovis.students.nomoredomains.xyz',
+  'https://api.krylovis.students.nomoredomains.xyz',
   'localhost:3000',
 ];
 
