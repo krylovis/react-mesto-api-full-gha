@@ -29,7 +29,8 @@ export const authorize = ({ password, email }) => {
   return request('signin', defaultOptions(password, email))
 };
 
-export const tokenVerification = (token) => {
+export const tokenVerification = () => {
+  console.log('tokenVerification');
   return fetch(`${BASE_URL}/users/me`).then(getResponse)
 
   // return request('users/me', {
