@@ -76,20 +76,21 @@ export default function App() {
   }, [loggedIn]);
 
   function handleTokenCheck() {
-    const token = localStorage.getItem('mesto-react-token');
-    if (token) {
-      tokenVerification(token)
-        .then(({ data }) => {
-          if (data) {
-            setUserEmail(data.email);
-            setLoggedIn(true);
-            navigate('/');
-          } else {
-            setLoggedIn(false);
-          }
-        })
-        .catch(err => console.log(err));
-    }
+    // const token = localStorage.getItem('mesto-react-token');
+    // if (token) {
+    // tokenVerification(token)
+    tokenVerification()
+      .then(({ data }) => {
+        if (data) {
+          setUserEmail(data.email);
+          setLoggedIn(true);
+          navigate('/');
+        } else {
+          setLoggedIn(false);
+        }
+      })
+      .catch(err => console.log(err));
+    // }
   };
 
   function handleTooltipOpen(result) {
