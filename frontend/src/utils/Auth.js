@@ -32,9 +32,9 @@ export const authorize = ({ password, email }) => {
 export const tokenVerification = () => {
   return request('users/me', {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    }
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // }
   })
 };
 // export const tokenVerification = (token) => {
