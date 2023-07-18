@@ -31,9 +31,9 @@ module.exports.createCard = (req, res, next) => {
 module.exports.deleteCard = (req, res, next) => {
   Cards.findById(req.params.id)
     .then((findCard) => {
-      if (!findCard) throw new NotFoundError(CARD_NONEXISTENT);
+      if (!findCard) return next(new NotFoundError(CARD_NONEXISTENT));
       if (findCard.owner.toString() !== req.user.id) {
-        throw new ForbiddenError(NO_RIGHTS_TO_DELETE);
+        return next(new ForbiddenError(NO_RIGHTS_TO_DELETE));
       }
       return Cards.findByIdAndRemove(req.params.id)
         .then((card) => res.status(HTTP_STATUS_OK).send(card));
@@ -47,11 +47,12 @@ module.exports.likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user.id } },
     { new: true },
   )
-    .then((card) => card.populate(['owner', 'likes']))
     .then((card) => {
-      if (!card) throw new NotFoundError(CARD_NONEXISTENT);
-      return res.status(HTTP_STATUS_OK).send(card);
+      if (!card) return next(new NotFoundError(CARD_NONEXISTENT));
+      return card;
     })
+    .then((card) => card.populate(['owner', 'likes']))
+    .then((card) => res.status(HTTP_STATUS_OK).send(card))
     .catch(next);
 };
 
@@ -61,10 +62,11 @@ module.exports.dislikeCard = (req, res, next) => {
     { $pull: { likes: req.user.id } },
     { new: true },
   )
-    .then((card) => card.populate(['owner', 'likes']))
     .then((card) => {
-      if (!card) throw new NotFoundError(CARD_NONEXISTENT);
-      return res.status(HTTP_STATUS_OK).send(card);
+      if (!card) return next(new NotFoundError(CARD_NONEXISTENT));
+      return card;
     })
+    .then((card) => card.populate(['owner', 'likes']))
+    .then((card) => res.status(HTTP_STATUS_OK).send(card))
     .catch(next);
 };
