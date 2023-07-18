@@ -5,13 +5,15 @@ import { logout } from '../utils/Auth';
 
 
 export default function Header(props) {
-  const { userEmail, handleSetLoggedOut, loggedIn } = props;
+  const { userEmail, handleSetLoggedOut, loggedIn, setCurrentUser } = props;
   const [isOpen, setIsOpen] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(false);
   const navigate = useNavigate();
 
   const onSignOut = () => {
-    logout();
+    logout()
+      .then((user) => setCurrentUser(user))
+      .catch(err => console.log(err));
     handleSetLoggedOut();
     navigate('/sign-in');
     setIsOpen(false);

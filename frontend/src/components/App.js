@@ -144,7 +144,7 @@ export default function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <CardListContext.Provider value={cardList}>
-        <Header userEmail={userEmail} handleSetLoggedOut={handleSetLoggedOut} loggedIn={loggedIn} />
+        <Header userEmail={userEmail} handleSetLoggedOut={handleSetLoggedOut} loggedIn={loggedIn} setCurrentUser={setCurrentUser} />
         <Routes>
           <Route
             path="/"
