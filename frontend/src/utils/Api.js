@@ -32,10 +32,11 @@ class Api {
   }
 
   editUserInfo(body) {
+    const { name, about } = body;
     return this._request(this._baseUrl + '/users/me', {
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify(body),
+      body: JSON.stringify({ name, about }),
       credentials: 'include',
     })
   }
