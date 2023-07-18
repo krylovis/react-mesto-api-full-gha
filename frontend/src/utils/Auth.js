@@ -43,3 +43,10 @@ export const tokenVerification = () => {
     credentials: 'include',
   })
 };
+
+export const logout = () => {
+  return request('logout', {
+    method: 'POST',
+    credentials: 'include',
+  })
+};

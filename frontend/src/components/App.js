@@ -76,12 +76,8 @@ export default function App() {
   }, [loggedIn]);
 
   function handleTokenCheck() {
-    // const token = localStorage.getItem('mesto-react-token');
-    // if (token) {
     tokenVerification()
-      // .then(({ data }) => {
       .then((data) => {
-        console.log('data', data);
         if (data) {
           setUserEmail(data.email);
           setLoggedIn(true);
@@ -91,7 +87,6 @@ export default function App() {
         }
       })
       .catch(err => console.log(err));
-    // }
   };
 
   function handleTooltipOpen(result) {
@@ -166,7 +161,7 @@ export default function App() {
                 />
               )} />} />
           <Route path="/sign-up" element={<Register handleTooltipOpen={handleTooltipOpen} />} />
-          <Route path="/sign-in" element={<Login handleSetLoggedIn={handleSetLoggedIn} handleTooltipOpen={handleTooltipOpen} />} />
+          <Route path="/sign-in" element={<Login handleSetLoggedIn={handleSetLoggedIn} handleTooltipOpen={handleTooltipOpen} setCurrentUser={setCurrentUser} />} />
         </Routes>
 
         {loggedIn && <Footer />}
