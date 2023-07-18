@@ -73,17 +73,21 @@ export default function App() {
   React.useEffect(() => {
     handleTokenCheck();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loggedIn]);
+  }, []);
 
   function handleTokenCheck() {
     tokenVerification()
       .then((data) => {
-        if (data) {
+        if (data._id) {
+          setCurrentUser(data);
           setUserEmail(data.email);
           setLoggedIn(true);
           navigate('/');
         } else {
           setLoggedIn(false);
+          setCurrentUser({});
+          navigate('/sign-in');
+          setUserEmail(null);
         }
       })
       .catch(err => console.log(err));
