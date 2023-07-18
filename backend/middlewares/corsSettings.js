@@ -3,7 +3,8 @@ const allowedCors = [
   'https://mesto.krylovis.students.nomoredomains.xyz',
   'http://api.krylovis.students.nomoredomains.xyz',
   'https://api.krylovis.students.nomoredomains.xyz',
-  'localhost:3000',
+  'http://localhost:3000',
+  'http://localhost:3001',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
