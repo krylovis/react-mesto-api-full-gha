@@ -13,7 +13,7 @@ const {
 
 module.exports.getCards = (req, res, next) => {
   Cards.find({})
-    .populate('owner')
+    .populate(['owner', 'likes'])
     .then((cards) => res.status(HTTP_STATUS_OK).send(cards))
     .catch(next);
 };
