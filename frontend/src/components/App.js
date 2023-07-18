@@ -68,7 +68,7 @@ export default function App() {
     api.getCards()
       .then((data) => setCardList(data))
       .catch(err => console.log(err));
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     handleTokenCheck();
