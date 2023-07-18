@@ -47,6 +47,7 @@ module.exports.likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user.id } },
     { new: true },
   )
+    .then((card) => card.populate(['owner', 'likes']))
     .then((card) => {
       if (!card) throw new NotFoundError(CARD_NONEXISTENT);
       return res.status(HTTP_STATUS_OK).send(card);
@@ -60,6 +61,7 @@ module.exports.dislikeCard = (req, res, next) => {
     { $pull: { likes: req.user.id } },
     { new: true },
   )
+    .then((card) => card.populate(['owner', 'likes']))
     .then((card) => {
       if (!card) throw new NotFoundError(CARD_NONEXISTENT);
       return res.status(HTTP_STATUS_OK).send(card);
