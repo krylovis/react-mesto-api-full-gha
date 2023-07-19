@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 
 export default function Login(props) {
-  const { handleSetLoggedIn, handleTooltipOpen, setCurrentUser } = props;
+  const { handleSetLoggedIn, handleTooltipOpen, setCurrentUser, handleSetUserEmail } = props;
   const { values, handleChange } = useForm({ email: '', password: '' });
   const navigate = useNavigate();
 
@@ -13,6 +13,7 @@ export default function Login(props) {
     authorize(values)
       .then((data) => {
         setCurrentUser(data);
+        handleSetUserEmail(data.email);
         handleSetLoggedIn();
         navigate('/');
       })

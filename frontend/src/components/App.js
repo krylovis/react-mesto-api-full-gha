@@ -46,6 +46,7 @@ export default function App() {
   const handleAddPlaceClick = () => setAddPlacePopupOpen(true);
   const handleDeleteClick = () => setDelConfPopupOpen(true);
   const handleCardClick = (link, name) => setSelectedCard({ link, name });
+  const handleSetUserEmail = (email) => setUserEmail(email);
 
   const closeAllPopups = () => {
     setEditAvatarPopupOpen(false);
@@ -165,7 +166,12 @@ export default function App() {
                 />
               )} />} />
           <Route path="/sign-up" element={<Register handleTooltipOpen={handleTooltipOpen} />} />
-          <Route path="/sign-in" element={<Login handleSetLoggedIn={handleSetLoggedIn} handleTooltipOpen={handleTooltipOpen} setCurrentUser={setCurrentUser} />} />
+          <Route path="/sign-in" element={<Login
+            handleSetLoggedIn={handleSetLoggedIn}
+            handleTooltipOpen={handleTooltipOpen}
+            setCurrentUser={setCurrentUser}
+            handleSetUserEmail={handleSetUserEmail}
+          />} />
         </Routes>
 
         {loggedIn && <Footer />}
